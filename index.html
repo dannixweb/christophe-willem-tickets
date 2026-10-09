@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Christopher Willem | Concert Tickets</title>
+
+  <meta
+    name="description"
+    content="Discover Christopher Willem concert information, event dates, ticket prices, and ticket purchasing options."
+  >
+
+  <meta name="theme-color" content="#0756c9">
+
+  <style>
+    :root {
+      --blue: #0756c9;
+      --dark-blue: #063b8c;
+      --light-blue: #eaf3ff;
+      --white: #ffffff;
+      --text: #172033;
+      --muted: #667085;
+      --border: #e0e8f2;
+      --green: #16834a;
+      --shadow: 0 12px 35px rgba(7, 54, 115, 0.09);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f7faff;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar {
+      min-height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--blue);
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--text);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--blue);
+    }
+
+    .nav-button {
+      background: var(--blue);
+      color: white !important;
+      padding: 11px 17px;
+      border-radius: 8px;
+    }
+
+    /* HERO */
+
+    .hero {
+      padding: 78px 0;
+      background:
+        radial-gradient(
+          circle at 90% 10%,
+          #c8e0ff 0,
+          transparent 35%
+        ),
+        linear-gradient(135deg, #ffffff 0%, #eaf3ff 100%);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      background: #dceaff;
+      color: var(--dark-blue);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      padding: 8px 12px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 5vw, 61px);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero-description {
+      max-width: 540px;
+      color: var(--muted);
+      font-size: 17px;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 14px 22px;
+      border-radius: 9px;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--blue);
+      color: white;
+      box-shadow: 0 6px 16px rgba(7, 86, 201, 0.2);
+    }
+
+    .button-primary:hover {
+      background: var(--dark-blue);
+    }
+
+    .button-secondary {
+      color: var(--blue);
+      background: white;
+      border-color: #b9d3fa;
+    }
+
+    .artist-card {
+      position: relative;
+      background: white;
+      border: 1px solid var(--border);
+      padding: 14px;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .artist-photo {
+      width: 100%;
+      height: 370px;
+      object-fit: cover;
+      display: block;
+      border-radius: 14px;
+      background: linear-gradient(145deg, #dbeaff, #8db8f4);
+    }
+
+    .photo-caption {
+      padding: 17px 8px 7px;
+    }
+
+    .photo-caption strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    .photo-caption p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    /* GENERAL SECTIONS */
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(27px, 4vw, 38px);
+      margin-bottom: 10px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* CONCERTS */
+
+    .concert-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .concert-card {
+      background: white;
+      padding: 24px;
+      border-radius: 15px;
+      border: 1px solid var(--border);
+      box-shadow: 0 5px 20px rgba(7, 54, 115, 0.04);
+    }
+
+    .concert-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .concert-detail {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    .concert-detail strong {
+      color: var(--text);
+    }
+
+    .concert-footer {
+      border-top: 1px solid var(--border);
+      padding-top: 18px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .price-label {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--blue);
+    }
+
+    .small-button {
+      padding: 11px 15px;
+      font-size: 13px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: var(--light-blue);
+    }
+
+    .about-content {
+      max-width: 760px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .about-content h2 {
+      font-size: 32px;
+      margin-bottom: 18px;
+    }
+
+    .about-content p {
+      color: #526176;
+      margin-bottom: 15px;
+    }
+
+    /* PURCHASE */
+
+    .purchase-section {
+      padding: 65px 0;
+    }
+
+    .purchase-box {
+      background: linear-gradient(135deg, #0756c9, #063b8c);
+      color: white;
+      border-radius: 20px;
+      padding: 44px 25px;
+      text-align: center;
+    }
+
+    .purchase-box h2 {
+      font-size: clamp(26px, 4vw, 37px);
+      margin-bottom: 12px;
+    }
+
+    .purchase-box p {
+      max-width: 600px;
+      margin: 0 auto 24px;
+      color: #e1edff;
+    }
+
+    .purchase-box .button {
+      background: white;
+      color: var(--dark-blue);
+    }
+
+    .purchase-note {
+      margin-top: 16px !important;
+      font-size: 12px;
+    }
+
+    /* FAQ */
+
+    .faq-list {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    details {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+
+    summary {
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    details p {
+      color: var(--muted);
+      font-size: 14px;
+      padding-top: 12px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #071b39;
+      color: white;
+      padding: 35px 0;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #c1d0e6;
+    }
+
+    footer a {
+      color: white;
+      font-size: 13px;
+    }
+
+    .footer-note {
+      width: 100%;
+      padding-top: 18px;
+      border-top: 1px solid #263b59;
+      margin-top: 10px;
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+      .navbar {
+        padding: 15px 0;
+        align-items: flex-start;
+      }
+
+      nav {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .nav-button {
+        padding: 8px 10px;
+      }
+
+      .hero {
+        padding: 48px 0;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+
+      .artist-photo {
+        height: 310px;
+      }
+
+      section {
+        padding: 55px 0;
+      }
+
+      .concert-list {
+        grid-template-columns: 1fr;
+      }
+
+      .concert-footer {
+        flex-wrap: wrap;
+      }
+
+      .purchase-box {
+        padding: 35px 20px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .navbar {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav {
+        justify-content: center;
+      }
+
+      .hero-actions .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container navbar">
+
+      <a href="#home" class="logo">
+        CW<span> Concerts</span>
+      </a>
+
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#concerts">Concerts</a>
+        <a href="#about">About</a>
+        <a href="#faq">FAQ</a>
+        <a
+          href="https://services.zangi.com/dl/conversation/3388844208"
+          class="nav-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Get Tickets
+        </a>
+      </nav>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">Concert Information</span>
+
+          <h1>
+            Experience the music of
+            <span>Christopher Willem</span>
+          </h1>
+
+          <p class="hero-description">
+            Discover concert announcements, event information,
+            and ticket purchasing details for upcoming performances.
+            Find an event and follow the purchase instructions.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#concerts" class="button button-primary">
+              Explore Concerts
+            </a>
+
+            <a href="#about" class="button button-secondary">
+              Learn More
+            </a>
+          </div>
+        </div>
+
+        <div class="artist-card">
+
+          <!-- Replace this placeholder with an artist image
+               you have permission to use. -->
+
+          <img
+            class="artist-photo"
+            src="artist-photo.jpg"
+            alt="Christopher Willem"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+
+          <div
+            style="
+              display:none;
+              height:310px;
+              border-radius:14px;
+              background:linear-gradient(145deg,#dbeaff,#8db8f4);
+              align-items:center;
+              justify-content:center;
+              text-align:center;
+              padding:25px;
+              color:#063b8c;
+              font-weight:bold;
+            "
+          >
+            Add your authorized<br>
+            Christopher Willem photo here
+          </div>
+
+          <div class="photo-caption">
+            <strong>Christopher Willem</strong>
+            <p>Concert information and announcements</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONCERTS -->
+
+    <section id="concerts">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Upcoming Concerts</h2>
+          <p>
+            Check the event details below. Replace the sample
+            information with confirmed dates, venues, and prices
+            before publishing.
+          </p>
+        </div>
+
+        <div class="concert-list">
+
+          <!-- CONCERT 1 -->
+
+          <article class="concert-card">
+
+            <h3>Upcoming Concert</h3>
+
+            <p class="concert-detail">
+              <strong>Date:</strong> To be announced
+            </p>
+
+            <p class="concert-detail">
+              <strong>Venue:</strong> To be confirmed
+            </p>
+
+            <p class="concert-detail">
+              <strong>Location:</strong> To be announced
+            </p>
+
+            <div class="concert-footer">
+
+              <div>
+                <div class="price-label">Ticket price</div>
+                <div class="price">To be confirmed</div>
+              </div>
+
+              <a
+                class="button button-primary small-button"
+                href="https://services.zangi.com/dl/conversation/3388844208"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Enquire About Tickets
+              </a>
+
+            </div>
+          </article>
+
+          <!-- CONCERT 2 -->
+
+          <article class="concert-card">
+
+            <h3>Future Performance</h3>
+
+            <p class="concert-detail">
+              <strong>Date:</strong> To be announced
+            </p>
+
+            <p class="concert-detail">
+              <strong>Venue:</strong> To be confirmed
+            </p>
+
+            <p class="concert-detail">
+              <strong>Location:</strong> To be announced
+            </p>
+
+            <div class="concert-footer">
+
+              <div>
+                <div class="price-label">Ticket price</div>
+                <div class="price">To be confirmed</div>
+              </div>
+
+              <a
+                class="button button-primary small-button"
+                href="https://services.zangi.com/dl/conversation/3388844208"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Enquire About Tickets
+              </a>
+
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+
+    <section class="about" id="about">
+      <div class="container about-content">
+
+        <h2>About the Concerts</h2>
+
+        <p>
+          This website provides a convenient place to view concert
+          announcements and find ticket enquiry information for
+          Christopher Willem performances.
+        </p>
+
+        <p>
+          Event dates, venue details, ticket categories, availability,
+          and prices should be confirmed before purchasing.
+        </p>
+
+        <a href="#concerts" class="button button-primary">
+          View Concert Information
+        </a>
+
+      </div>
+    </section>
+
+    <!-- PURCHASE -->
+
+    <section class="purchase-section">
+      <div class="container">
+
+        <div class="purchase-box">
+
+          <h2>Looking for Tickets?</h2>
+
+          <p>
+            Use the link below to contact the ticket manager
+            and request the available ticket options, prices,
+            and purchase instructions.
+          </p>
+
+          <a
+            href="https://services.zangi.com/dl/conversation/3388844208"
+            class="button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Ticket Manager
+          </a>
+
+          <p class="purchase-note">
+            Confirm the event details, final price, and payment
+            instructions with the authorized ticket seller before paying.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FAQ -->
+
+    <section id="faq">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Important information for concertgoers.
+          </p>
+        </div>
+
+        <div class="faq-list">
+
+          <details>
+            <summary>Where can I enquire about tickets?</summary>
+            <p>
+              Use the Contact Ticket Manager button on this page
+              to reach the contact provided by the website owner.
+            </p>
+          </details>
+
+          <details>
+            <summary>How can I confirm ticket prices?</summary>
+            <p>
+              Ask the ticket manager for the current price,
+              ticket category, any additional charges, and
+              the total amount payable before completing a purchase.
+            </p>
+          </details>
+
+          <details>
+            <summary>Where can I find concert dates?</summary>
+            <p>
+              Check the concert listings on this page. Dates and
+              venues should be updated only after they are confirmed.
+            </p>
+          </details>
+
+          <details>
+            <summary>Does this page process payments?</summary>
+            <p>
+              No. This is a static information website. The
+              purchase link opens an external service. This page
+              does not collect payment details or issue tickets.
+            </p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <div class="container footer-content">
+
+      <div>
+        <a href="#home" style="font-size:19px;font-weight:800;">
+          CW Concerts
+        </a>
+
+        <p style="margin-top:7px;">
+          Concert information and ticket enquiries.
+        </p>
+      </div>
+
+      <div>
+        <a href="#home">Home</a>
+        &nbsp; · &nbsp;
+        <a href="#concerts">Concerts</a>
+        &nbsp; · &nbsp;
+        <a href="#faq">FAQ</a>
+      </div>
+
+      <div class="footer-note">
+        <p>
+          © <span id="current-year"></span> CW Concerts.
+          All rights reserved.
+        </p>
+
+        <p style="margin-top:7px;">
+          This website is not represented as an official artist
+          website unless that status has been authorized and verified.
+          Artist names and images remain the property of their
+          respective owners.
+        </p>
+      </div>
+
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+    </html>
